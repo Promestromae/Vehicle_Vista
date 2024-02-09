@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		    <meta charset="UTF-8">
+		        <meta name="viewport" content="width=device-width, initial-sca>
+				        <title>Recommers</title>
+					    <style>
+					            body {
+						                fly: Ars-serif;
+								            background-color: #f8f9fa;
+									                margin: 0;
+											      dding: 20px;
+											              }
+												              h1 {
+													                  color: #343a40;
+															              text-align: center;
+																                  margin-bottom: 20px;
+																		          }
+																			       
+																			                   list-style-type: none;
+																					               padding: 0;
+																						                   margin: 0;
+																								           }
+																									           li {
+																										               background-color: #fff;
+																											                   border-radius: 5px;
+																													               box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+																														                   margin-bottom: 10px;
+																																          ding: 20px;
+																																	          }
+																																		          li:hover {
+																																			              background-color: #f0f0f0;
+																																				              }
+																																					              .car-na          font-size: 20px;
+																																						                  color: #007bff;
+																																								              margin-bottom: 10px;
+																																									              }
+																																										              .car-details {
+																																											                  font-size: 14px;
+																																													              color: #6c757d;
+																																														              }
+																																															          </style>
+	</head>
+	<body>
+	    <h1>Recommended Cars</h1>
+	        <ul>
+		        {% for car in recommended_cars %}
+			            <li>
+				                    <div class="car-name">{{ car.name }}</div>
+								                <div class="car-details">
+											                        >Model:</strong> {{ car.model }}<br>
+														    <strong>Year:</strong> {{ ca}<br>
+														                        <strong>Price:</strong> {{ car.price }}<br>
+																	                    <!-- Add more details as needed -->
+																			                    </div>
+																					                </li>
+																							        {% endfor %}
+																								    </ul>
+	</body>
+</html>

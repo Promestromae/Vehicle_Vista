@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		    <meta charset="UTF-8">
+		        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			    <title>{% block title %}Vehicle Vista{% endblock %}</title>
+			        <link rel="stylesheet" href="htotstrap.min.css"
+						               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+				    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+							      ilename='css/styles.css') }}">
+	</head>
+	<body>
+	    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+			        <div class="container">
+					                <a class="navbar-brand" href="/">Vehicle Vista</a>
+								              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+											                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+															                    <span class="navbar-toggler-icon"></span>
+																			             </button>
+																				                 <div class="colvbar-collapse" id="navbarResponsive">
+																							                     <ul class="navbar-nav ml-auto">
+																											                    <li class="nav-item                 class="nav-link" href="/">Home</a>
+																													                        </li>
+																																            {% if user and usethenticated %}
+																																	                        <lem">
+																																				                             <a class="nav-link" href="{{ url_for('views.dashboard') }}">Dashboard</a>             </li>
+																																								                           <li class="nav-item">
+																																												                              <a class="nav-link" href="/logout" oncliurn confirmLogout()"t</a>
+																																															                          </li>
+																																																		              {% else %}
+																																																			                          <li class="nav-item">
+																																																							                          <a class="nav-link" href="/login">Login</a>
+																																																										                      <                  {% e
+																																																												                      </ul>
+																																																														            /div>
+																																																															            </div>
+																																																																        </nav>
+																																																																	    
+																																																																	    <div class="container">
+																																																																		            {% with messages = get_flashed_messages(wegories=true) %}
+																																																																			            {% if messages %}
+																																																																				            {% for category, message in messages %}
+																																																																					            <div class="aler{{ category }} alert-dismissable fade show" role="alert">
+																																																																							                {{ message }}
+																																																																									            <button type="button" class="close" data-dismiss="aler        span aria-hidden="true">&times;</span>
+																																																																												              </button>
+																																																																													         div>
+																																																																														         {% endfor %}
+																																																																															         {% endif %}
+																																																																																         {% endwith %}
+																																																																																	         
+																																																																																		         {% block content %}
+																																																																																			         {% endblock %}
+																																																																																				     </div>
+
+    <script tps://code.jquery.com/jquery-3.5.1.slim.min.js"
+	            integrity="sha384-DfXdz2htPH0lsSSs5nCTC+OGpamoFVnE+Iew+OrCXaRkfj"
+		            crossorigin=ous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9umd/popper.min.js"
+		        integrity="sha384-XXXXXXXXXXXXXXX"
+			        crossorigin="anonymous"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		        grity="sha384-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+			        crossorigin="anonymous"></script>
+	        <script>
+			        function confirmLogout() {
+					            return confirm("Are you sure you want to logout?");
+					        }
+    </script>
+	</body>
+</html>
+
