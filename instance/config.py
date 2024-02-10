@@ -1,7 +1,7 @@
 import os
 
 # Define the base directory of the project
-basedir = os.path.abspath(os.path.dirname(_file_))
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
         # Secret key for CSRF protection and session management

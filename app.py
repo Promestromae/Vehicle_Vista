@@ -1,10 +1,11 @@
+import os
 from flask import Flask, render_template
-from .config import SQLALCHEMY_DATABASE_URI
-from .models import db
+from instance.config import Config
+from website.models import db
 
 def create_app():
-        app = Flask(_name_)
-    app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+    app = Flask(__name__)
+    app.config.from_object(Config)
     db.init_app(app)
     return app
 
@@ -25,8 +26,8 @@ def home():
 
 @app.route('/car/<int:car_id>')
 def car_details(car_id):
-        car = dummy_cars[car_id - 1]
+    car = dummy_cars[car_id - 1]
     return render_template('car_details.html', car=car)
 
-if _name_ == '_main_':
-        app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
