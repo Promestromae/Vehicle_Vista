@@ -5,12 +5,12 @@ import os
 from werkzeug.utils import secure_filename
 from . import db
 
-auth = Blueprint('auth', _name_)
+auth = Blueprint('auth', __name__)
 
 @auth.route('/add_car', methods=['GET', 'POST'])
 @login_required
 def add_car():
-        if request.method == 'POST':
+    if request.method == 'POST':
                     name = request.form.get('name')
         model = request.form.get('model')
         description = request.form.get('description')
