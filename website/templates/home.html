@@ -1,29 +1,28 @@
-{% extends "base.html" %}
+se.html" %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
 <div class="container">
-	    <h2>Welcome to Vehicle Vista</h2>
-	        <div class="row">
-			        {% for car in cars %}
-				        <div class="col-md-4">
-						            <div class="card mb-4 shadow-sm">
-								                    <img src="{{ url_for('static', filename='images/' + car.image_url.split('/')[-1]) }}" class="card-img-top" alt="{{ car.name }}">
-										                    <div class="card-body">
-													                        <h5 clrd-title">{{ car.name }}</h5>
-																	                         ription }}</p>
-																				                     <div class="d-flex justify-content-between align-items-center">
-																								                         <div class="btn-group">
-																												                                 <a href="{{ url_for('views.view_car', car_id=car.id) }}" class="btn btn-sm btn-outline-secondary">View Details</a>
-																																	                              <a href="{{ url_for('views.book_car', car_id=car.id) }}" class="btn btn-sm btn-primary">Book Now</a>
-																																					                               </div>
-																																								                           </div>
-																																											                   </div>
-																																													               </div>
-																																														               </div>
-																																															               {% endfor %}
-																																																           </div>
+	    <h2>Wee Vista</h2>
+	        <div class=
+		             {% for car in cars %}
+		             <div class="col-md-4">
+				                 <div class="card mb-4 shadow-sm">
+							                 <img src="{{ url_for('static', filename='images/' + car.image_url.split('/')[-1]) }}" class="card-img-top" alt="{{ car.name }}">
+									                 <div class="card-body">
+												                     <h5 class="card-title">{{ car.name }}</h5>
+														                         <p class="card-text">{{ car.description }}</p>
+																	                     <div class="d-flex justify-content-between align-items-center">
+																				                             <div class="btn-group">
+																								                                 <a href="{{ url_for('views.view_car', car_id=car.id) }}" class="btn btn-sm btn-outline-secondary">View Details</a>
+																												                             <a href="{{ url_for('views.book_car', car_id=car.id) }}" class="btn btn-sm btn-primary">Book Now</a>
+																															                             </div>
+																																		                         </div>
+																																					                 </div>
+																																							             </div>
+																																								             </div>
+																																									             {% endfor %}
+																																										         </div>
 </div>
 {% endblock %}
-
