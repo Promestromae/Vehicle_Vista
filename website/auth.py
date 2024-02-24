@@ -11,7 +11,7 @@ auth = Blueprint('auth', __name__)
 @login_required
 def add_car():
     if request.method == 'POST':
-                    name = request.form.get('name')
+        name = request.form.get('name')
         model = request.form.get('model')
         description = request.form.get('description')
         car_image = request.files['car_image']
@@ -31,7 +31,7 @@ def add_car():
 
         # Only proceed if all fields are provided
         if name and model and description and car_image and engine:
-                        filename = secure_filename(car_image.filename)
+            filename = secure_filename(car_image.filename)
             image_path = os.path.join('website/static/images', filename)
             car_image.save(image_path)
 
