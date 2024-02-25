@@ -2,11 +2,11 @@
 <html lang="en">
 	<head>
 		    <meta charset="UTF-8">
-		        <meta name="viewport" content="width=device-width, initial-sca>
+		        <meta name="viewport" content="width=device-width, initial-sca">
 				        <title>Recommers</title>
 					    <style>
 					            body {
-						                fly: Ars-serif;
+						                fly: Arial, sans-serif;
 								            background-color: #f8f9fa;
 									                margin: 0;
 											      dding: 20px;
@@ -26,18 +26,18 @@
 																											                   border-radius: 5px;
 																													               box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 																														                   margin-bottom: 10px;
-																																          ding: 20px;
+																																          padding: 20px;
 																																	          }
-																																		          li:hover {
+																																		       li:hover {
 																																			              background-color: #f0f0f0;
 																																				              }
-																																					              .car-na          font-size: 20px;
+																																		       .car-name  {        font-size: 20px;
 																																						                  color: #007bff;
 																																								              margin-bottom: 10px;
 																																									              }
 																																										              .car-details {
 																																											                  font-size: 14px;
-																																													              color: #6c757d;
+																																													        color: #6c757d;
 																																														              }
 																																															          </style>
 	</head>
@@ -48,8 +48,8 @@
 			            <li>
 				                    <div class="car-name">{{ car.name }}</div>
 								                <div class="car-details">
-											                        >Model:</strong> {{ car.model }}<br>
-														    <strong>Year:</strong> {{ ca}<br>
+											                        Model:</strong> {{ car.model }}<br>
+													<strong>Year:</strong> {{ car.year }}<br>
 														                        <strong>Price:</strong> {{ car.price }}<br>
 																	                    <!-- Add more details as needed -->
 																			                    </div>
