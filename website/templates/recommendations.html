@@ -3,63 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Results</title>
+  <title>Car Recommendations</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      color: #343a40;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-    li {
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      margin-bottom: 10px;
-      padding: 20px;
-    }
-    li:hover {
-      background-color: #f0f0f0;
-    }
-    .car-name {
-      font-size: 20px;
-      color: #007bff;
-      margin-bottom: 10px;
-    }
-    .car-details {
-      font-size: 14px;
-      color: #6c757d;
-    }
+    /* Add your desired CSS styles here */
   </style>
 </head>
 <body>
-  <h1>Search Results</h1>
+  <h1>Car Recommendations</h1>
+  <p id="loading">Loading recommendations...</p>
+  <ul id="recommendations-list"></ul>
+  <p id="total-cars"></p>
+  <p id="average-price"></p>
 
-  {% if search_results %}
-    <ul>
-      {% for result in search_results %}
-        <li>
-          <div class="car-name">{{ result.name }}</div>
-          <div class="car-details">
-            <strong>Model:</strong> {{ result.model }}<br>
-            <strong>Year:</strong> {{ result.year }}<br>
-            <strong>Price:</strong> {{ result.price }}<br>
+  <script>
+    // Replace with your actual API endpoint URL
+    const recommendationsUrl = "/api/recommendations";
+
+    fetch(recommendationsUrl)
+      .then(response => response.json())
+      .then(data => {
+        const recommendationsList = document.getElementById("recommendations-list");
+        recommendationsList.innerHTML = ""; // Clear previous content
+
+        if (data.error_message) {
+          // Handle errors
+          console.error(data.error_message);
+          // You can display an error message to the user here
+          return;
+        }
+
+        const { recommended_cars, total_cars, average_price } = data;
+
+        // Update total cars and average price elements
+        document.getElementById("total-cars").textContent = `Total Cars: ${total_cars}`;
+        document.getElementById("average-price").textContent = `Average Price: $${average_price.toFixed(2)}`;
+
+        // Loop through recommendations and create list items
+        for (const car of recommended_cars) {
+          const listItem = document.createElement("li");
+          listItem.innerHTML = `
+            <div class="car-name">${car.model}</div>
+            <div class="car-details">
+              <strong>Make:</strong> ${car.make}<br>
+              <strong>Year:</strong> ${car.year}<br>
+              <strong>Price:</strong> $${car.price}<br>
             </div>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No search results found.</p>
-  {% endif %}
+          `;
+          recommendationsList.appendChild(listItem);
+        }
+
+        // Remove loading message
+        document.getElementById("loading").style.display = "none";
+      })
+      .catch(error => {
+        console.error(error);
+        // Handle errors appropriately, e.g., display an error message to the user
+      });
+  </script>
 </body>
 </html>

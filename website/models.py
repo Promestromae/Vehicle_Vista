@@ -9,6 +9,9 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(200))
     password = db.Column(db.String(200))
     is_admin = db.Column(db.Boolean, default=False)
+    # Add fields for user preferences (e.g., preferred_make, max_price)
+    preferred_make = db.Column(db.String(100))
+    max_price = db.Column(db.Float)
 
 class Car(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,4 +43,3 @@ class Review(db.Model):
     car_id = db.Column(db.Integer, db.ForeignKey('car.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.Text)
-
