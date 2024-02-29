@@ -1,64 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-	    <meta charset="UTF-8">
-			       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-						         <title>{% block title %}Vehicle Vista{% endblock %}</title>
-							     <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-									        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container">
-				             <a class="navbar-brand" href="/">Vehicle Vista</a>
-						               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-																											              <span class="navbar-toggler-icon"></span>
-																														           </button>
-																															           <div class="collapse navbar-collapse" id="navbarResponsive">
-																																					             <ul class="navbar-nav ml-auto">
-																																							                 <li class="nav-item">
-																																										                     <a class="nav-link" href="/">Home</a>
-																																													               </li>
-																																														       {% if user and user.authenticated %}
-																																																                    <li class="nav-item">
-																																																			                       <a class="nav-link" href="{{ url_for('views.dashboard') }}">Dashboard</a>
-																																																								                       </li>
-																																																										                           <li class="nav-item">
-																																																														                      <a class="nav-link" href="/logout" onclick="return confirmLogout()">Logout</a>
-																																																																		            </li>
-																																																																			            {% else %}
-																																																																				                        <li class="nav-item">
-																																																																								                           <a class="nav-link" href="/login">Login</a>
-																																																																												                 </li>
-																																																																														                 {% endif %}
-																																																																																             </ul>
-																																																																																	             </div>
-																																																																																		         </div>
-		</nav class="container">
-		          {% with messages = get_flashed_messages(with_categories=true) %}
-			          {% if messages %}
-				              {% for category, message in messages %}
-					              <div class="alert alert-{{ category }} alert-dismissable fade show" role="alert">
-															                      {{ message }}
-																	                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-																						                <span aria-hidden="true">&times;</span>
-																										                       </button>
-																												               </div>
-																													                   {% endfor %}
-																															           {% endif %}
-																																       {% endwith %}
-																																           {% block content %}
-																																	       {% endblock %}
-																																	       </div>
-
-																																	       <script src="/code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSC+OGpamoFVnE+Iew+OrCXaRkfj" crossorigin="anonymous"></script>
-																																	       <script src="https://cdn.jsdelivr.net/nperjs/core@2.9.2/umd/popper.min.js" integrity="sha384-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-																																	       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-																																		</script>
-																																			        function confirmL() {
- return confirm("Are you sure you want to logout?");
-																																																							    }
-																																		 </script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Vehicle Vista{% endblock %}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">Vehicle Vista</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          {% if user and user.authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('views.dashboard') }}">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout" onclick="return confirmLogout()">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissable fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% block content %}
+  {% endblock %}
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSC+OGpamoFVnE+Iew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.2/dist/umd/popper.min.js" integrity="sha384-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<script>
+function confirmLogout() {
+  return confirm("Are you sure you want to logout?");
+}
+</script>
 </html>
-
-

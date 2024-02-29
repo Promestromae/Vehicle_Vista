@@ -1,48 +1,73 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		    <meta charset="utf-8" />
-		  <title>{% block title %}Vehicle Detail - Vehicle Vista{% endblock %}</title>
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-						    ntegrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-			        <link rel="stylesheet" href="static/style.css" />
-	</head>
-	<body>
-		    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-			            <div class="container">
-					                <a class="navbar-brand" href="/">Vehicle Vista</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-							       aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-													                  <span class="navbar-toggler-icon"></span>
-																                   </button>
-																 <div class="collapse navbar-collapse" id="navbarResponsive">
-																			 <ul class="navbar-nav ml-auto">
-																								                          <li class="nav-item">
-																												                             <a class="nav-link" href="/">Home</a>
-																																                           </li>
-																																			                       <li class="nav-item">
-																																							                          <a class="nav-link" href="{{ url_for('views.dashboard') }}">Dashboard</a>
-																																											                        </li>
-																																														                    <li class="nav-item">
-																																																	                               <a class="nav-link" href="/login">Login</a>
-																																																						                     </li>
-																																																								                     </ul>
-																																																										                 </div>
-																																																												         </div>
-																																																													     </nav>
-
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}Vehicle Detail - Vehicle Vista{% endblock %}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-		        <h1>{{ car.name }}</h1>
-			    </div>
+      <a class="navbar-brand" href="/">Vehicle Vista</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('views.dashboard') }}">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-				            crossorigin="anonymous"></script>
-							     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-									          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-											             crossorigin="anonymous"></script>
-														      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-																           integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-																		              crossorigin="anonymous"></script>
-	</body>
-</cxhtml>
+  <div class="container">
+    <h1>{{ car.name }}</h1>
+
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{ car.image_url }}" alt="{{ car.name }} car image" onerror="this.src='https://via.placeholder.com/300x200';">
+      </div>
+      <div class="col-md-6">
+        <p class="card-text">{{ car.description }}</p>
+
+        {% if car.features %}
+          <h4>Features:</h4>
+          <ul class="list-group">
+            {% for feature in car.features %}
+              <li class="list-group-item">{{ feature }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if car.price %}
+          <h4>Price: {{ car.price }}</h4>
+        {% endif %}
+
+        {% if car.availability %}
+          <h4>Availability: {{ car.availability }}</h4>
+        {% endif %}
+
+        <a href="{{ url_for('views.book_car', car_id=car.id) }}" class="btn btn-primary mt-3">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8j
