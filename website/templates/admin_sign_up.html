@@ -3,40 +3,43 @@
 {% block title %}Admin Sign Up{% endblock %}
 
 {% block content %}
-<form method="POST">
-    <h3	align="center">Admin Sign Up</h3>
-     <div class="form-group">
-	             <label for="email">Email Address</label>
-		     <input
-				                 type="email"
-						             class="form-control"
-							                 id="email"
-									          name="email"
-										                 placeholder="Enter email"
-												             required
-												         />
-			         </div>
-				     <div class="form-group">
-					             <label for="id_number">ID number</label>
-						             <input
-								                 type="text"
-										         clas=="form-control"
-											                 id="id_number"
-													             name="id_number"
-														                 placeholder="Enter your ID number"
-																             required
-																         />
-							         </div>
-								     <div class="form-group">
-									             <label for="phone">Phone</label>
-										             <input
-												                 type="text"
-														             class="form-control"
-															                 id="phone"
-																placeholder=" Enter your phone number"
-																				         required
-																					         />
-																						     </div>
-																						         <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container">
+  <h3 class="text-center mb-4">Admin Sign Up</h3>
+  <form method="POST">
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Enter your email address"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="id_number">ID Number</label>
+      <input
+        type="text"
+        class="form-control"
+        id="id_number"
+        name="id_number"
+        placeholder="Enter your ID number"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        name="phone"
+        placeholder="Enter your phone number"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
 {% endblock %}

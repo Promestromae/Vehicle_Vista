@@ -4,14 +4,37 @@
 
 {% block content %}
 <div class="container">
-	    <h2>User Dashboard</h2>
-	        <div class="profile">
-			        <h3>Your Profile</h3>
-				        <p><strong>Name:</strong> {{ user.name }}</p>
-					        <p><strong>Email:</strong> {{ user.email }}</p>
-						<p><strong>Phone:</strong> {{ user.phone  }}</p>
-							        <!-- Add more profile details here as needed -->
-								        <a href="{{ url_for('auth.edit_profile') }}" class="btn btn-primary">Edit Profile</a>
-									    </div>
+  <h2>User Dashboard</h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="profile">
+        <h3>Your Profile</h3>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phone }}</p>
+        <a href="{{ url_for('auth.edit_profile') }}" class="btn btn-primary">Edit Profile</a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h3>Recent Bookings</h3>
+      <ul class="list-group">
+        {% if recent_bookings %}
+          {% for booking in recent_bookings %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a href="{{ url_for('views.view_booking', booking_id=booking.id) }}">
+                {{ booking.car.name }} - {{ booking.start_date|strftime('%d %B, %Y') }} to {{ booking.end_date|strftime('%d %B, %Y') }}
+              </a>
+              <span class="badge badge-primary badge-pill">Details</span>
+            </li>
+          {% endfor %}
+        {% else %}
+          <p class="text-center text-muted mb-0">You don't have any recent bookings.</p>
+          <a href="{{ url_for('views.bookings') }}" class="btn btn-primary mt-2">Make a Booking</a>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
 </div>
 {% endblock %}
