@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<  <meta="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Add Car - Vehicle Vista</title>
+	    </head>
+	    <body>
+		      <h1>Add Car</h1>
+
+		        <form method="POST" enctype="multipart/form-data">
+				    {{ form.hidden_tag() }}
+
+				        <div class="form-group">
+						      <label for="name">{{ form.name.label }}<="alert">
+							                {{ form.model.errors[0] }}
+									        </div>
+										      {% endif %}
+										          </div>
+
+											      <div class="form-group">
+												            <label for="description">{{ form.description.label }}</label>
+													          {{ form.description(rows="5") }}  # Adjust rows as needed
+														        {% if form.description.errors %}
+															        <div clart alert-danger" role="alert">
+																			          {{ form.description.errors[0] }}
+																				          </div>
+																					        {% endif %}
+																						    </form-group">
+																						    label for="car_image">{{ form.car_image.label }}</label>
+						            {{ form.car_image(accept="image/*") }}
+							          {% if form.car_image.errors %}
+								          <div class="alert alert-danger" role="alert">
+										            {{ form.car_image.errors[0] }}
+											            </div>
+												          {% endif %}
+													      </div>
+
+													          <div class="form-group">
+															        <label for="engine">{{ form.engine.label }}</label>
+																      {{ form.engine(size="30") }}
+																            {% if form.engine.errors %}
+																	            <div class="alert alert-danger" role="alert">
+																			              {{ form.engine.errors[0] }}
+																				              </div>
+																					            {% endif %}
+																						        </div>
+
+																							    <div class="form-group">
+																								          <label for="price">Price (USD):</label>
+																									        <input type="number" class="form-control" id="price" name="price" min="0" required>
+																										      {% if form.price.errors %}  <div class="alertanger" role="alert">
+																											                {{ form.pris[0] }}  </div>
+																										          ndif %}
+																											      </div>
+
+																											          <div class="form-group">
+																													        <or="year">Yeanufacture:</label>
+																													      <input type="number" clam-control" id="year" name="year" min="1900" max="{{ current_year }}" required>  {% if form.year.errors %}  <div class="alert alert-danger" role="alert">
+																															             {{ form.yes[0] }}  </div>
+																																           {% endif %}
+																																	       </div>
+
+    <button type="submit" cla btn-priAdd Car</button>
+		    <
+
+  </body>
+</html>
+
